@@ -56,6 +56,28 @@ async function update(id, data, userId) {
     return record;
 }
 
+async function likeStone(stoneId, userId) {
+    const record = await Stone.findById(stoneId);
+
+    if (!record) {
+        throw new ReferenceError('Record not found ' + stoneId);
+    }
+
+    if (record.owner.toString() == userId) {
+        throw new Error('Access denied');
+    }
+
+    if (record.likes.find(l => l.toString() == userId)) {
+        return;
+    }
+
+    record.likes.push(userId);
+
+    await record.save();
+
+    return record
+}
+
 async function deleteById(id, userId) {
     const record = await Stone.findById(id);
 
@@ -75,7 +97,8 @@ module.exports = {
     getById,
     create,
     update,
+    getRecent,
+    likeStone,
     deleteById,
-    getRecent
 }
 
