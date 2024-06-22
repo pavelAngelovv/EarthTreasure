@@ -38,13 +38,19 @@ async function update(id, data, userId) {
         throw new ReferenceError('Record not found ' + id);
     }
 
-    if (record.author.toString() != userId) {
+    if (record.owner.toString() != userId) {
         throw new Error('Access denied');
     }
 
-    // TODO replace with real properties
-    record.prop = data.prop;
 
+    // TODO replace with real properties
+    record.name = data.name,
+    record.category = data.category,
+    record.color = data.color,
+    record.image = data.image,
+    record.location = data.location,
+    record.formula = data.formula,
+    record.description = data.description,
     await record.save();
 
     return record;
@@ -57,7 +63,7 @@ async function deleteById(id, userId) {
         throw new ReferenceError('Record not found ' + id);
     }
 
-    if (record.author.toString() != userId) {
+    if (record.owner.toString() != userId) {
         throw new Error('Access denied');
     }
 

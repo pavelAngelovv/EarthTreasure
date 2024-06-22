@@ -22,8 +22,12 @@ homeRouter.get('/catalog/:id', async (req, res) => {
     if (!stone) {
         res.render('404');
         return;
-    }
-    res.render('details', { stone });
+    };
+
+    const isOwner = req.user?._id == stone.owner.toString();
+    const isLiked = Boolean(stone.likes.find(l => req.user?._id == l.toString()));
+
+    res.render('details', { stone, isOwner, isLiked });
 });
 
 module.exports = { homeRouter };
