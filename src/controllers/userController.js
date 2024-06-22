@@ -56,4 +56,9 @@ userRouter.post('/login', isGuest(),
         }
     });
 
+userRouter.get('/logout', async (req, res) => {
+    res.clearCookie('token')
+    res.redirect('/')
+});
+
 module.exports = { userRouter };

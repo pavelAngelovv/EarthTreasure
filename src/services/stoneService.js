@@ -21,7 +21,6 @@ async function create(data, authorId) {
         color: data.color,
         image: data.image,
         location: data.location,
-        prop: data.prop,
         formula: data.formula,
         description: data.description,
         owner: authorId

@@ -23,10 +23,6 @@ const stoneSchema = new Schema({
         type: String,
         required: true,
     },
-    prop: {
-        type: String,
-        required: true,
-    },
     formula: {
         type: String,
         required: true,
