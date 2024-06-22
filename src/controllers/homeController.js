@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const { getRecent } = require("../services/stoneService");
 
 // TODO replace with real router according to exam description
 
@@ -6,9 +7,9 @@ const homeRouter = Router();
 
 homeRouter.get('/', async (req, res) => {
     console.log(req.user);
-    const minerals = [1, 2, 3]
+    const stones = await getRecent();
 
-    res.render('home', { minerals });
+    res.render('home', { stones });
 });
 
 module.exports = { homeRouter };

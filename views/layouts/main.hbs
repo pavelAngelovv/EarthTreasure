@@ -25,20 +25,20 @@
             <!-- Navigation -->
             <nav>
                 <div>
-                    <a href="#">Home</a>
-                    <a href="#">Dashboard</a>
-                    <a href="#">Search</a>
+                    <a href="/home">Home</a>
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/search">Search</a>
                 </div>
                 {{#if hasUser}}
                 <!-- Logged-in users -->
                 <div class="user">
-                    < a href="#">Add Stones</a>
-                    <a href="#">Logout</a>
+                    <a href="/create">Add Stones</a>
+                    <a href="/logout">Logout</a>
                 </div>
                 {{else}}
                 <div class="guest">
-                    <a href="#">Login</a>
-                    <a href="#">Register</a>
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
                 </div>
                 {{/if}}
 
